@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     srand48(time(nil))
     
     refreshButton.rx_tap
-      .bindNext {
+      .bindNext { [unowned self] in
         
         let backgroundColor = UIColor(red: self.random, green: self.random, blue: self.random, alpha: 1.0)
 
