@@ -26,14 +26,15 @@ class ViewController: UIViewController {
     srand48(time(nil))
     
     refreshButton.rx_tap
-      .bindNext { [unowned self] in
+      .bindNext { [weak self] in
+        guard let strongSelf = self else { return }
         
-        let backgroundColor = UIColor(red: self.random, green: self.random, blue: self.random, alpha: 1.0)
+        let backgroundColor = UIColor(red: strongSelf.random, green: strongSelf.random, blue: strongSelf.random, alpha: 1.0)
 
         Async.main(after: 5.0) {
           
           UIView.animateWithDuration(0.3) {
-            self.view.backgroundColor = backgroundColor
+            strongSelf.view.backgroundColor = backgroundColor
             print("animateWithDuration(_:animations:) was executed")
           }
           
