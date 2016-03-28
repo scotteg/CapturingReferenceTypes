@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IBq-L0-xaX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X9h-QQ-tRU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,16 +19,54 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="1ZE-I7-wkP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="dja-RG-krc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="E59-ce-zS9">
                             <connections>
-                                <action selector="handleRefreshButtonTapped:" destination="BYZ-38-t0r" id="1IK-vZ-dkn"/>
+                                <segue destination="gDm-jE-zMm" kind="unwind" unwindAction="unwindToRootViewController:" id="dzF-ck-Z1U"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="OKL-Qh-4Qo"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="refreshButton" destination="OKL-Qh-4Qo" id="WYa-KU-Pti"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="gDm-jE-zMm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="659"/>
+            <point key="canvasLocation" x="3084" y="659"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="EER-jr-eP9">
+            <objects>
+                <viewController id="X9h-QQ-tRU" customClass="RootViewController" customModule="CapturingReferenceTypes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OHm-OE-ac4"/>
+                        <viewControllerLayoutGuide type="bottom" id="dKK-kg-CHW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JjE-8f-37c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3x-Nd-AoD">
+                                <rect key="frame" x="275" y="285" width="51" height="30"/>
+                                <state key="normal" title="Tap Me"/>
+                                <connections>
+                                    <segue destination="IBq-L0-xaX" kind="popoverPresentation" popoverAnchorView="U3x-Nd-AoD" id="jsH-7J-u9p">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U3x-Nd-AoD" firstAttribute="centerY" secondItem="JjE-8f-37c" secondAttribute="centerY" id="1Kv-yW-NtR"/>
+                            <constraint firstItem="U3x-Nd-AoD" firstAttribute="centerX" secondItem="JjE-8f-37c" secondAttribute="centerX" id="SBx-0s-HLz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="szO-Z7-Ywu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1460" y="659"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xjb-oG-iUr">
@@ -46,7 +84,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Uc-et-OO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1460" y="659"/>
+            <point key="canvasLocation" x="2272" y="659"/>
         </scene>
     </scenes>
 </document>
